@@ -33,4 +33,74 @@ class ApiUserRepository implements UserRepository {
       return false;
     }
   }
+
+  @override
+  Future<Map<String, dynamic>> getUserDetails(String userId) async {
+    try {
+      final response = await http.get(
+        Uri.parse('$baseUrl/get_user_email/$userId'),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+      );
+
+      if (response.statusCode == 200) {
+        // Retorna los detalles del usuario en forma de mapa
+        return jsonDecode(response.body);
+      } else {
+        // Si el código de estado no es 200, retorna un mapa vacío
+        return {};
+      }
+    } catch (e) {
+      // En caso de excepción, retorna un mapa vacío
+      return {};
+    }
+  }
+
+  @override
+  Future<bool> updateUserInfo(String userId, Map<String, dynamic> newData) async {
+    try {
+      final response = await http.put(
+        Uri.parse('$baseUrl/update_user_email/$userId'),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: jsonEncode(newData),
+      );
+
+      if (response.statusCode == 200) {
+        // Retorna true si la actualización fue exitosa
+        return true;
+      } else {
+        // Si el código de estado no es 200, retorna false
+        return false;
+      }
+    } catch (e) {
+      // En caso de excepción, retorna false
+      return false;
+    }
+  }
+
+  @override
+  Future<bool> deleteUserAccount(String userId) async {
+    try {
+      final response = await http.delete(
+        Uri.parse('$baseUrl/delete_user_email/$userId'),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+      );
+
+      if (response.statusCode == 200) {
+        // Retorna true si la eliminación fue exitosa
+        return true;
+      } else {
+        // Si el código de estado no es 200, retorna false
+        return false;
+      }
+    } catch (e) {
+      // En caso de excepción, retorna false
+      return false;
+    }
+  }
 }

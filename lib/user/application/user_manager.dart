@@ -1,3 +1,5 @@
+import 'package:proyecto_integrador/user/infraestructure/services/local_storage_service.dart';
+
 import '../domain/usercases/get_user_details_use_case.dart';
 import '../domain/usercases/update_user_info_use_case.dart';
 import '../domain/usercases/delete_user_account_use_case.dart';
@@ -10,7 +12,7 @@ class UserManager {
   UserManager({
     required this.getUserDetailsUseCase,
     required this.updateUserInfoUseCase,
-    required this.deleteUserAccountUseCase,
+    required this.deleteUserAccountUseCase, required LocalStorageService localStorageService,
   });
 
   Future<Map<String, dynamic>> getUserDetails(String userId) async {

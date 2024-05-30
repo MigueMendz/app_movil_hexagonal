@@ -32,7 +32,7 @@ dependencies:
     sdk: flutter
   dartz: ^0.10.1
   http: ^0.13.3  # Asegúrate de tener la última versión del paquete http aquí
-
+  connectivity: ^3.0.6
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

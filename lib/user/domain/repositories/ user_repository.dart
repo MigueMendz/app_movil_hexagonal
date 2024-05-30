@@ -5,4 +5,7 @@ abstract class UserRepository {
   Future<Map<String, dynamic>> getUserDetails(String userId);
   Future<bool> updateUserInfo(String userId, Map<String, dynamic> newData);
   Future<bool> deleteUserAccount(String userId);
-}
+  }
+
+
+

@@ -1,4 +1,5 @@
-import '../repositories/ user_repository.dart';
+
+import '../../domain/repositories/ user_repository.dart';
 
 class UpdateUserInfoUseCase {
   final UserRepository userRepository;

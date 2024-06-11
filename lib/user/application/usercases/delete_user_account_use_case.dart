@@ -1,4 +1,4 @@
-import '../repositories/ user_repository.dart';
+import '../../domain/repositories/ user_repository.dart';
 
 class DeleteUserAccountUseCase {
   final UserRepository userRepository;

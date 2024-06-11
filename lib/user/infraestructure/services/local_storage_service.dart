@@ -50,4 +50,7 @@ class LocalStorageService {
     }
     _pendingTransactions.clear();
   }
+
+  getUserDetailsLocally(String userId) {}
+
 }

@@ -1,4 +1,4 @@
-import 'package:proyecto_integrador/user/domain/usercases/login_user_use_case.dart';
+import 'package:proyecto_integrador/user/application/usercases/login_user_use_case.dart';
 
 class AuthManager {
   final LoginUserUseCase loginUserUseCase;

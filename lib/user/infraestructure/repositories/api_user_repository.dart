@@ -112,4 +112,7 @@ class ApiUserRepository implements UserRepository {
       return false;
     }
   }
+
+  @override
+  dynamic noSuchMethod(Invocation invocation) => super.noSuchMethod(invocation);
 }

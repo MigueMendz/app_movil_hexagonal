@@ -1,8 +1,7 @@
+import 'package:proyecto_integrador/user/application/usercases/delete_user_account_use_case.dart';
+import 'package:proyecto_integrador/user/application/usercases/get_user_details_use_case.dart';
+import 'package:proyecto_integrador/user/application/usercases/update_user_info_use_case.dart';
 import 'package:proyecto_integrador/user/infraestructure/services/local_storage_service.dart';
-
-import '../domain/usercases/get_user_details_use_case.dart';
-import '../domain/usercases/update_user_info_use_case.dart';
-import '../domain/usercases/delete_user_account_use_case.dart';
 
 class UserManager {
   final GetUserDetailsUseCase getUserDetailsUseCase;
@@ -26,4 +25,6 @@ class UserManager {
   Future<bool> deleteUserAccount(String userId) async {
     return await deleteUserAccountUseCase.execute(userId);
   }
+
+
 }

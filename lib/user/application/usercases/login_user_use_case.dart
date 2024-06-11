@@ -1,6 +1,7 @@
 import 'package:proyecto_integrador/user/domain/entities/user_entity.dart';
 
-import '../repositories/ user_repository.dart';
+import '../../domain/repositories/ user_repository.dart';
+
 
 class LoginUserUseCase {
   final UserRepository userRepository;

@@ -4,7 +4,7 @@ import '../infraestructure/services/local_storage_service.dart';
 import '../infraestructure/services/network_service.dart';
 import '../infraestructure/repositories/api_user_repository.dart';
 
-class UserRepositoryImpl implements UserRepository {
+abstract class UserRepositoryImpl implements UserRepository {
   final NetworkService _networkService;
   final LocalStorageService _localStorageService;
   final ApiUserRepository _apiUserRepository;

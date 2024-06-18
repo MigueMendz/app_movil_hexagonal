@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart'; // Importa Firebase Core
 import 'package:proyecto_integrador/user/application/auth_manager.dart';
 import 'package:proyecto_integrador/user/application/user_manager.dart';
 import 'package:proyecto_integrador/user/application/usercases/delete_user_account_use_case.dart';
 import 'package:proyecto_integrador/user/application/usercases/get_user_details_use_case.dart';
 import 'package:proyecto_integrador/user/application/usercases/login_user_use_case.dart';
+import 'package:proyecto_integrador/user/application/usercases/list_users_use_case.dart';
 import 'package:proyecto_integrador/user/application/usercases/update_user_info_use_case.dart';
 import 'package:proyecto_integrador/user/infraestructure/repositories/api_user_repository.dart';
 import 'package:proyecto_integrador/user/infraestructure/services/local_storage_service.dart';
@@ -12,8 +14,13 @@ import 'package:proyecto_integrador/user/presentation/pages/chat_page.dart';
 import 'package:proyecto_integrador/user/presentation/pages/list_user_page.dart';
 import 'package:proyecto_integrador/user/presentation/pages/login_page.dart';
 import 'package:proyecto_integrador/user/presentation/pages/user_details_page.dart';
+import 'firebase_options.dart'; // Importa las opciones generadas
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized(); // Asegura la inicialización de Flutter
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform, // Inicializa Firebase
+  );
   runApp(MyApp());
 }
 
@@ -24,7 +31,7 @@ class MyApp extends StatelessWidget {
     NetworkService networkService = NetworkService();
     LocalStorageService localStorageService = LocalStorageService();
     ApiUserRepository apiUserRepository = ApiUserRepository(
-      'http://192.168.56.1:3002', // tu baseUrl
+      'http://15.0.11.104:3002', // tu baseUrl
       networkService,
       localStorageService,
     );
@@ -37,6 +44,7 @@ class MyApp extends StatelessWidget {
     final deleteUserAccountUseCase = DeleteUserAccountUseCase(apiUserRepository);
     final updateUserInfoUseCase = UpdateUserInfoUseCase(apiUserRepository);
     final getUserDetailsUseCase = GetUserDetailsUseCase(apiUserRepository);
+    final listUsersUseCase = ListUsersUseCase(apiUserRepository);
 
     // Managers
     final authManager = AuthManager(loginUserUseCase);
@@ -44,7 +52,8 @@ class MyApp extends StatelessWidget {
       deleteUserAccountUseCase: deleteUserAccountUseCase,
       updateUserInfoUseCase: updateUserInfoUseCase,
       getUserDetailsUseCase: getUserDetailsUseCase,
-      localStorageService: localStorageService, // Pasa el servicio al constructor de UserManager
+      localStorageService: localStorageService,
+      listUsersUseCase: listUsersUseCase
     );
 
     // Iniciar la aplicación
@@ -53,7 +62,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/chat',
+      initialRoute: '/',
       routes: {
         '/': (context) => LoginPage(authManager: authManager),
         '/perfil': (context) => UserDetailsPage(userManager: userManager),

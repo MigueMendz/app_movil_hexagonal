@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "393731342360",
+    "firebase_url": "https://backend-chat-movil-2-default-rtdb.firebaseio.com",
+    "project_id": "backend-chat-movil-2",
+    "storage_bucket": "backend-chat-movil-2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:393731342360:android:cf0984681e500806ad836d",
+        "android_client_info": {
+          "package_name": "com.example.proyecto_integrador"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfoju_3C89gF1LNzGqaGlo6jlDq3RKsII"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:393731342360:android:0b9de596c1dd851aad836d",
+        "android_client_info": {
+          "package_name": "com.proyecto"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfoju_3C89gF1LNzGqaGlo6jlDq3RKsII"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

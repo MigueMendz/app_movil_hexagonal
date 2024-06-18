@@ -113,6 +113,32 @@ class ApiUserRepository implements UserRepository {
     }
   }
 
+  Future<List<User>> listUsers() async {
+    try {
+      if (await _networkService.hasValidConnection()) {
+        final response = await http.get(
+          Uri.parse('$baseUrl/list_users'),
+          headers: <String, String>{
+            'Content-Type': 'application/json; charset=UTF-8',
+          },
+        );
+
+        if (response.statusCode == 200) {
+          final List<dynamic> usersJson = jsonDecode(response.body);
+          List<User> users = usersJson.map((userJson) => User.fromJson(userJson)).toList();
+          return users;
+        } else {
+          throw Exception('Error al obtener la lista de usuarios: ${response.statusCode}');
+        }
+      } else {
+        throw Exception('No hay conexión a internet.');
+      }
+    } catch (e) {
+      throw Exception('Error al obtener la lista de usuarios: $e');
+    }
+  }
+
+
   @override
   dynamic noSuchMethod(Invocation invocation) => super.noSuchMethod(invocation);
 }

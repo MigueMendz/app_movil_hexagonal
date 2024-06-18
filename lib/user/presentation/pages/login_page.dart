@@ -18,7 +18,7 @@ class LoginPage extends StatelessWidget {
     if (success) {
       Navigator.pushNamed(
         context,
-        '/perfil',
+        '/chat',
         arguments: {
           'email': userEmail,
         },

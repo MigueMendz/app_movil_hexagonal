@@ -6,6 +6,7 @@ abstract class UserRepository {
   Future<bool> updateUserInfo(String userId, Map<String, dynamic> newData);
   Future<bool> deleteUserAccount(String userId);
   Future<bool> registerUser(User user); // Agrega este método para registrar un usuario
+  Future<List<User>> listUsers(); // Método para listar todos los usuarios
 }
 
 

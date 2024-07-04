@@ -66,4 +66,5 @@ abstract class UserRepositoryImpl implements UserRepository {
     }
     return success;
   }
+
 }

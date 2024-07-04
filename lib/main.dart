@@ -13,6 +13,7 @@ import 'package:proyecto_integrador/user/infraestructure/services/network_servic
 import 'package:proyecto_integrador/user/presentation/pages/chat_page.dart';
 import 'package:proyecto_integrador/user/presentation/pages/list_user_page.dart';
 import 'package:proyecto_integrador/user/presentation/pages/login_page.dart';
+import 'package:proyecto_integrador/user/presentation/pages/register_page.dart';
 import 'package:proyecto_integrador/user/presentation/pages/user_details_page.dart';
 import 'firebase_options.dart'; // Importa las opciones generadas
 
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
     NetworkService networkService = NetworkService();
     LocalStorageService localStorageService = LocalStorageService();
     ApiUserRepository apiUserRepository = ApiUserRepository(
-      'http://15.0.11.104:3002', // tu baseUrl
+      'https://kw2fk5zh-3002.use2.devtunnels.ms', // tu baseUrl
       networkService,
       localStorageService,
     );
@@ -67,7 +68,9 @@ class MyApp extends StatelessWidget {
         '/': (context) => LoginPage(authManager: authManager),
         '/perfil': (context) => UserDetailsPage(userManager: userManager),
         '/chat': (context) => ChatPage(),
-        '/list': (context) => ListUserPage()
+        '/list': (context) => ListUserPage(),
+        '/register': (context) => RegisterPage(),
+        "/detail": (context) => UserDetailsPage(userManager: userManager)
       },
     );
   }

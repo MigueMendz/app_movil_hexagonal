@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:proyecto_integrador/user/presentation/pages/register_page.dart';
 import '../../application/auth_manager.dart';
 
 class LoginPage extends StatelessWidget {
@@ -18,7 +19,7 @@ class LoginPage extends StatelessWidget {
     if (success) {
       Navigator.pushNamed(
         context,
-        '/chat',
+        '/detail',
         arguments: {
           'email': userEmail,
         },
@@ -36,7 +37,12 @@ class LoginPage extends StatelessWidget {
       );
     }
   }
-
+  void navigateToRegister(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => RegisterPage()),
+    );
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -84,6 +90,11 @@ class LoginPage extends StatelessWidget {
                 ElevatedButton(
                   onPressed: () => login(context),
                   child: Text('Iniciar Sesión'),
+                ),
+                SizedBox(height: 12.0),
+                TextButton(
+                  onPressed: () => navigateToRegister(context),
+                  child: Text('¿No tienes una cuenta? Regístrate aquí'),
                 ),
               ],
             ),
